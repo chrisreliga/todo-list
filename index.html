@@ -23,21 +23,32 @@
       <h1>Hello Chris, here is your todo list.</h1>
     </header>
 
-    <section>
-      <div class="todo-input-container">
-        <input type="text" name="todo-input" id="todo-input" />
-        <button type="button" class="add-button" id="add-button">
-          <i class="fa-solid fa-circle-plus"></i>
-        </button>
-      </div>
+    <main>
+      <div class="main-container">
+        <div class="left-container container" id="todo-container">
+          <input
+            type="text"
+            name="task-input"
+            placeholder="Enter todo item..."
+            id="taskInput"
+          />
 
-      <div class="dropdown-list-container">
-        <input type="button" value="All" />
-        <button type="button">
-          <i class="fa-solid fa-angle-down"></i>
-        </button>
+          <button type="button" id="add-task-button">
+            <i class="fa-solid fa-circle-plus"></i>
+          </button>
+
+          <ul id="task-list"></ul>
+        </div>
+        <div class="top-right-container container" id="pending-count">
+          <h2>Pending Tasks</h2>
+          <h3>0</h3>
+        </div>
+        <div class="bottom-right-container container" id="completed-count">
+          <h2>Tasks Completed</h2>
+          <h3>0</h3>
+        </div>
       </div>
-    </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
