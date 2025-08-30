@@ -144,3 +144,15 @@ main .main-container {
   cursor: pointer;
   margin-right: 0.5rem;
 }
+
+#task-list i.fa-square-check:hover {
+  color: rgb(0, 224, 0);
+}
+
+#task-list i.fa-trash:hover {
+  color: rgb(255, 136, 0);
+}
+
+#task-list i.fa-flag:hover {
+  color: rgb(198, 183, 25);
+}
