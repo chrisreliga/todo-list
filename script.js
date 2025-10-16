@@ -1,98 +1,110 @@
 'use strict';
 
-//Add a priority tier list feature where users can select from a dropdown High, Medium, or Low
 const addTaskButton = document.getElementById('add-task-button');
-const taskList = document.getElementById('task-list');
 const taskInput = document.getElementById('taskInput');
-const pendingTask = document.getElementById('pendingTasks');
-const completedTask = document.getElementById('completedTasks');
+const pendingTask = document.getElementById('pending-tasks');
+const completedTask = document.getElementById('completed-tasks');
+const deletedTask = document.getElementById('deleted-tasks');
+const movementsContainer = document.getElementById('movements__container');
+
+const checkmark = document.querySelector('.checkmark');
+const flagButton = document.querySelector('.fa-solid.fa-flag');
+const trashButton = document.querySelector('.fa-solid.fa-trash');
 
 completedTask.textContent = 0;
 pendingTask.textContent = 0;
+deletedTask.textContent = 0;
+
+let taskID = 0;
 //
 //
-// Add A New Task-Click
-addTaskButton.addEventListener('click', function () {
-  const text = taskInput.value;
+//
+// Add Task Event Handler Function
+const handTaskBtn = () => {
+  const newTask = taskInput.value;
+  taskID++;
 
-  const newDiv = document.createElement('div');
-  newDiv.classList.add('newDiv');
-  taskList.appendChild(newDiv);
+  const html = `
+    <div class="movements__row">
 
-  const newItem = document.createElement('li');
-  newItem.textContent = text;
+  <div class="movements__utilities">
+    <!-- Checkbox -->
+<label class="custom__checkbox">
+    <input type="checkbox" id="task-${taskID}" />
+    <span class="checkmark"></span>
+</label>
 
-  const iconDiv = document.createElement('div');
-  iconDiv.classList.add('iconDiv');
-  const trashCan = document.createElement('i');
-  trashCan.classList.add('fa-solid', 'fa-trash');
-  const checkMark = document.createElement('i');
-  checkMark.classList.add('fa-solid', 'fa-square-check');
-  const flag = document.createElement('i');
-  flag.classList.add('fa-solid', 'fa-flag');
+    <!-- Date counter -->
+    <div class="movements__date">today</div>
+  </div>
 
-  iconDiv.appendChild(flag);
-  iconDiv.appendChild(trashCan);
-  iconDiv.appendChild(checkMark);
+    <!-- Task label -->
+    <label for="task-${taskID}" class="task__label">${newTask}</label>
 
-  newDiv.appendChild(newItem);
-  newDiv.appendChild(iconDiv);
+  <!-- Buttons -->
+  <div class="movements__btns">
+    <i class="fa-solid fa-flag"></i>
+    <i class="fa-solid fa-trash"></i>
+  </div>
+</div>`;
+
+  movementsContainer.insertAdjacentHTML('beforeend', html);
 
   pendingTask.textContent++;
 
   taskInput.value = '';
+};
+//
+//
+// Deleted Tasks Counter
+movementsContainer.addEventListener('click', function (e) {
+  const row = e.target.closest('.movements__row');
+
+  if (e.target.matches('.fa-trash')) {
+    if (!row) {
+      return;
+    }
+
+    deletedTask.textContent++;
+    pendingTask.textContent = Math.max(0, pendingTask.textContent - 1);
+
+    row.classList.add('fade-out');
+    setTimeout(() => row.remove(), 500);
+  }
+
+  if (e.target.matches('input[type="checkbox"]')) {
+    row.classList.add('fade-out');
+    setTimeout(() => row.remove(), 500);
+    completedTask.textContent++;
+    pendingTask.textContent = Math.max(0, pendingTask.textContent - 1);
+  }
+});
+//
+//
+// Add A New Task-Click
+addTaskButton.addEventListener('click', function () {
+  const newTask = taskInput.value;
+
+  if (newTask !== '') {
+    handTaskBtn();
+  } else if (newTask === '') {
+    alert('Please Enter a New Task');
+  }
 });
 //
 //
 // Add A New Task-Enter Key
 taskInput.addEventListener('keydown', function (event) {
+  const newTask = taskInput.value;
+
   if (event.key === 'Enter') {
-    const text = taskInput.value;
-
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('newDiv');
-    taskList.appendChild(newDiv);
-
-    const newItem = document.createElement('li');
-    newItem.textContent = text;
-
-    const iconDiv = document.createElement('div');
-    iconDiv.classList.add('iconDiv');
-    const trashCan = document.createElement('i');
-    trashCan.classList.add('fa-solid', 'fa-trash');
-    const checkMark = document.createElement('i');
-    checkMark.classList.add('fa-solid', 'fa-square-check');
-    const flag = document.createElement('i');
-    flag.classList.add('fa-solid', 'fa-flag');
-
-    iconDiv.appendChild(flag);
-    iconDiv.appendChild(trashCan);
-    iconDiv.appendChild(checkMark);
-
-    newDiv.appendChild(newItem);
-    newDiv.appendChild(iconDiv);
-
-    pendingTask.textContent++;
-
-    taskInput.value = '';
+    if (newTask !== '') {
+      handTaskBtn();
+    } else {
+      alert('Please Enter a New Task');
+    }
   }
 });
 //
 //
-// Icons (Complete, Delete, Flag)
-taskList.addEventListener('click', (e) => {
-  let task = e.target.closest('.newDiv');
-  let icons = e.target.closest('.iconDiv');
-
-  if (e.target.classList.contains('fa-square-check')) {
-    completedTask.textContent++;
-    pendingTask.textContent--;
-    task.remove();
-  } else if (e.target.classList.contains('fa-trash')) {
-    pendingTask.textContent--;
-    task.remove();
-  } else if (e.target.classList.contains('fa-flag')) {
-    task.style.backgroundColor = 'rgba(246, 255, 0, 0.76)';
-    icons.style.backgroundColor = 'rgba(246, 255, 0, 0)';
-  }
-});
+//

@@ -37,15 +37,23 @@
             <i class="fa-solid fa-circle-plus"></i>
           </button>
 
-          <ul id="task-list"></ul>
+          <div class="movements__container" id="movements__container"></div>
         </div>
-        <div class="top-right-container container" id="pending-count">
-          <h2>Pending Tasks</h2>
-          <h3 id="pendingTasks"></h3>
+
+        <div class="top-right-container container counter" id="pending-count">
+          <h2>Pending</h2>
+          <h3 id="pending-tasks"></h3>
         </div>
-        <div class="bottom-right-container container" id="completed-count">
-          <h2>Tasks Completed</h2>
-          <h3 id="completedTasks"></h3>
+        <div class="middle-container container counter" id="completed-count">
+          <h2>Completed</h2>
+          <h3 id="completed-tasks"></h3>
+        </div>
+        <div
+          class="bottom-right-container container counter"
+          id="deleted-count"
+        >
+          <h2>Deleted</h2>
+          <h3 id="deleted-tasks"></h3>
         </div>
       </div>
     </main>
@@ -53,3 +61,4 @@
     <script src="script.js"></script>
   </body>
 </html>
+<!-- Add a counter in between the task and buttons that show amny days have passed since adding the task and put a background-color on it in red if its been 5+ days otherwise its green-->

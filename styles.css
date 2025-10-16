@@ -11,9 +11,8 @@ html {
 body {
   font-family: 'Lato', Arial, Helvetica, sans-serif;
   color: rgb(245, 245, 245);
-  background: url(/images/bodyBackground.jpg) no-repeat center center;
-  background-size: cover;
-  min-height: 100vh;
+  background-color: #f3f3f3;
+  color: #000;
 }
 
 header h1 {
@@ -32,32 +31,42 @@ main {
 main .main-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 2rem;
   margin-bottom: 7rem;
+  width: 110rem;
 }
 
 .container {
-  background-color: rgba(169, 169, 169, 0.429);
+  background-color: #fff;
   border-radius: 0.5rem;
   padding-left: 10rem;
   padding-right: 10rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.6);
+}
+
+.counter {
+  height: 12rem;
 }
 
 #todo-container {
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   text-align: start;
+  background-color: #fff;
+  height: 40rem;
 }
 
 #taskInput {
   font-size: 2.25rem;
-  border: none;
-  border-radius: 0.5rem;
+  border: 2px solid #444;
+  border-radius: 0.75rem;
   padding: 0.5rem;
   width: 90%;
+}
+
+#taskInput:focus {
+  outline: none;
 }
 
 #add-task-button {
@@ -65,7 +74,7 @@ main .main-container {
   padding: 0.5rem;
   font-size: 2.25rem;
   border-radius: 0.5rem;
-  transition: all 0.3s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
   border: none;
   margin-left: 0.5rem;
 }
@@ -81,11 +90,12 @@ main .main-container {
   flex-direction: column;
   text-align: center;
   font-size: 1.5rem;
+  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
 }
 
 #pending-count h3 {
   font-size: 4rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 #completed-count {
@@ -93,66 +103,137 @@ main .main-container {
   flex-direction: column;
   text-align: center;
   font-size: 1.5rem;
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
 
 #completed-count h3 {
   font-size: 4rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
-#task-list {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+#deleted-count {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5rem;
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 
-#task-list li {
-  list-style: none;
-  font-size: 2rem;
-  font-weight: 600;
-  color: hsl(0, 0%, 0%);
-  margin-left: 1rem;
+#deleted-count h3 {
+  font-size: 4rem;
+  margin-top: 1rem;
 }
 
-#task-list div {
-  background-color: rgb(211, 211, 211);
-  padding: 0.15rem;
-  margin: 0.75rem;
-  border-radius: 2rem;
-  max-width: 100%;
+.movements__container {
+  margin: 2rem auto 2rem;
+  overflow-y: auto;
+  height: 80%;
+}
+
+.movements__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+  background-image: linear-gradient(to top left, #4292e7, #9ebfe2);
+  border-radius: 0.75rem;
+  transition: opacity 0.5s;
 }
 
-#task-list i.fa-square-check {
-  color: rgb(21, 193, 21);
-  font-size: 2rem;
+.movements__row.fade-out {
+  opacity: 0;
+}
+
+.movements__utilities {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.custom__checkbox {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.custom__checkbox input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
   cursor: pointer;
-  margin-right: 1rem;
+  z-index: 2;
 }
 
-#task-list i.fa-trash {
-  color: rgb(255, 55, 0);
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: 1;
+  transition: all 0.2s;
+}
+
+.custom__checkbox input:checked + .checkmark {
+  background-color: blue;
+}
+
+.custom__checkbox input:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.movements__date {
+  background-image: linear-gradient(to top left, #39b385, #16d636);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0.35rem;
+  margin-right: 10px;
+}
+
+.task__label {
   font-size: 2rem;
+  font-weight: 300;
+  margin-left: 1rem;
   cursor: pointer;
-  margin-right: 0.5rem;
 }
 
-#task-list i.fa-flag {
-  color: rgb(200, 147, 0);
-  font-size: 2rem;
+.movements__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
   cursor: pointer;
-  margin-right: 0.5rem;
 }
 
-#task-list i.fa-square-check:hover {
-  color: rgb(0, 224, 0);
+.fa-solid.fa-trash {
+  color: rgb(255, 0, 0);
 }
 
-#task-list i.fa-trash:hover {
-  color: rgb(255, 136, 0);
+.fa-solid.fa-flag {
+  color: rgb(228, 224, 22);
 }
 
-#task-list i.fa-flag:hover {
-  color: rgb(198, 183, 25);
+.fa-solid.fa-trash:hover {
+  color: rgb(188, 0, 0);
+}
+
+.fa-solid.fa-flag:hover {
+  color: rgb(181, 178, 0);
 }
