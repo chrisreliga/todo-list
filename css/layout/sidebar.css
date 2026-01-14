@@ -1,0 +1,100 @@
+aside {
+  background-color: #f6f6f6;
+  width: 40%;
+  overflow: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.sidebar-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.sidebar-container h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #717171;
+}
+
+.sidebar-container ul {
+  list-style: none;
+}
+
+.sidebar-container ul button {
+  display: flex;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 400;
+  width: 100%;
+  align-items: center;
+  padding: 1rem;
+  color: #000;
+}
+
+.sidebar-container ul button:hover {
+  background-color: #a8f8ff51;
+}
+
+.sidebar-container ul button i {
+  padding-right: 3rem;
+}
+
+.sidebar-container small {
+  margin-left: auto;
+  color: #717171;
+}
+
+.bottom-sidebar span {
+  padding-right: 1rem;
+}
+
+.sidebar-separator {
+  height: 1px;
+  width: 100%;
+  background-color: #dfdfdf;
+}
+
+.bottom-sidebar-functions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bottom-sidebar-functions button {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #717171;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 1.25rem;
+  color: #717171;
+  font-weight: 500;
+}
+
+.color-theme-toggle {
+  background: none;
+  border: none;
+  color: #28827d;
+  cursor: pointer;
+}
+
+/* Active Classes */
+button.active {
+  background-color: #a8f8ff51;
+}

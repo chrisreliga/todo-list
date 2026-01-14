@@ -2,63 +2,149 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>To-Do List</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Todo Tracker</title>
   </head>
+
   <body>
-    <header>
-      <h1>Hello Chris, here is your todo list.</h1>
-    </header>
+    <div class="main-container">
+      <aside>
+        <div class="sidebar-container" role="navigation">
+          <h3>To Do Tracker</h3>
+          <div class="top-sidebar">
+            <ul>
+              <li>
+                <button type="button" class="active">
+                  <i class="fa-regular fa-house"></i>Tasks <small>0</small>
+                </button>
+              </li>
 
-    <main>
-      <div class="main-container">
-        <div class="left-container container" id="todo-container">
-          <input
-            type="text"
-            name="task-input"
-            placeholder="Enter todo item..."
-            id="taskInput"
-          />
+              <li>
+                <button type="button">
+                  <i class="fa-regular fa-star"></i>Important <small>0</small>
+                </button>
+              </li>
 
-          <button type="button" id="add-task-button">
-            <i class="fa-solid fa-circle-plus"></i>
-          </button>
+              <li>
+                <button type="button">
+                  <i class="fa-regular fa-flag"></i>Flagged <small>0</small>
+                </button>
+              </li>
 
-          <div class="movements__container" id="movements__container"></div>
-        </div>
+              <li>
+                <button type="button">
+                  <i class="fa-regular fa-trash-can"></i>Trash <small>0</small>
+                </button>
+              </li>
+            </ul>
+          </div>
 
-        <div class="top-right-container container counter" id="pending-count">
-          <h2>Pending</h2>
-          <h3 id="pending-tasks"></h3>
+          <div class="sidebar-separator"></div>
+
+          <div class="bottom-sidebar">
+            <div class="bottom-sidebar-functions">
+              <button type="button" class="edit-btn">Edit</button>
+              <button type="button" class="create-list-btn">
+                Create list+
+              </button>
+            </div>
+
+            <ul>
+              <li class="sidebar-menu-item">
+                <button type="button">
+                  <span>🥑</span> Groceries <small>0</small>
+                </button>
+              </li>
+
+              <li class="sidebar-menu-item">
+                <button type="button">
+                  <span>💻</span>Work <small>0</small>
+                </button>
+              </li>
+
+              <li class="sidebar-menu-item">
+                <button type="button">
+                  <span>🏡</span>Home <small>0</small>
+                </button>
+              </li>
+
+              <li class="sidebar-menu-item">
+                <button type="button">
+                  <span>🍿</span>Movies to watch <small>0</small>
+                </button>
+              </li>
+
+              <li class="sidebar-menu-item">
+                <button type="button">
+                  <span>🍔</span>Places to eat <small>0</small>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <footer>
+            <div class="color-theme">
+              <p>
+                Dark/Light Mode
+                <button type="button" class="color-theme-toggle">
+                  <i class="fa-solid fa-toggle-off"></i>
+                </button>
+              </p>
+            </div>
+
+            <p>Built by Christopher Religa</p>
+          </footer>
         </div>
-        <div class="middle-container container counter" id="completed-count">
-          <h2>Completed</h2>
-          <h3 id="completed-tasks"></h3>
+      </aside>
+
+      <main>
+        <h2>Tasks</h2>
+
+        <div class="tasks-content">
+          <div class="task-list-functions">
+            <button type="button" class="edit-btn">Edit List</button>
+            <button type="button" class="add-task-btn">Add Task+</button>
+          </div>
+
+          <ul class="task-list">
+            <li class="task-list-item new-task-input">
+              <i class="fa-regular fa-circle checkbox"></i>
+              <input
+                type="text"
+                name="task input"
+                id="task-input"
+                placeholder="Enter task..."
+              />
+            </li>
+
+            <li class="task-list-item">
+              <button class="completed-btn">
+                <i class="fa-regular fa-circle checkbox"></i></button
+              >Existing task 1
+            </li>
+            <li class="task-list-item">
+              <button class="completed-btn">
+                <i class="fa-regular fa-circle checkbox"></i></button
+              >Existing task 2
+            </li>
+            <li class="task-list-item">
+              <button class="completed-btn">
+                <i class="fa-regular fa-circle checkbox"></i></button
+              >Existing task 3
+            </li>
+          </ul>
         </div>
-        <div
-          class="bottom-right-container container counter"
-          id="deleted-count"
-        >
-          <h2>Deleted</h2>
-          <h3 id="deleted-tasks"></h3>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
 
     <script src="script.js"></script>
   </body>
 </html>
-<!-- Add a counter in between the task and buttons that show amny days have passed since adding the task and put a background-color on it in red if its been 5+ days otherwise its green-->

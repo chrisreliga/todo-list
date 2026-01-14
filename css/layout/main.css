@@ -1,0 +1,100 @@
+main {
+  background-color: #d5f1ef;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+main h2 {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  color: #154341;
+}
+
+.tasks-content {
+  border-radius: 10px;
+  width: 100%;
+  height: 60%;
+  padding: 0 2rem;
+}
+
+/* Edit & Add Task Buttons */
+.task-list-functions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.task-list-functions button {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #717171;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Task Input */
+.new-task-input {
+  display: none;
+}
+
+.new-task-input.show {
+  display: inline-block;
+}
+
+#task-input {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+#task-input:focus {
+  outline: none;
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.task-list-item {
+  font-size: 1.25rem;
+  font-weight: 400;
+  background-color: #f6f6f6;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.completed-btn {
+  background: none;
+  border: none;
+}
+
+.checkbox {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.checkbox.completed {
+  background-color: steelblue;
+  color: #fff;
+}
