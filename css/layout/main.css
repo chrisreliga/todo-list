@@ -27,7 +27,7 @@ main h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
   padding: 0 1rem;
 }
 
@@ -41,11 +41,11 @@ main h2 {
 }
 
 /* Task Input */
-.new-task-input {
+.task-input-container {
   display: none;
 }
 
-.new-task-input.show {
+.task-input-container.show {
   display: inline-block;
 }
 
